@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>披薩口味轉盤</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>今天吃哪個口味？</h1>
+        <p>點擊中間按鈕，轉盤停止時指針指向的口味就是答案。</p>
+      </section>
+
+      <section class="wheel-wrap">
+        <div class="pointer" aria-hidden="true"></div>
+        <canvas id="wheel" width="520" height="520" aria-label="披薩口味轉盤"></canvas>
+        <button id="spinBtn" class="spin-btn" type="button">開始</button>
+      </section>
+
+      <section class="result" aria-live="polite">
+        <span class="label">結果</span>
+        <span id="resultText" class="value">等待轉盤</span>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

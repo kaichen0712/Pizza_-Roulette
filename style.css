@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600&display=swap");
+
+:root {
+  --bg: #f7efe3;
+  --bg-2: #f2ddc8;
+  --ink: #2a1d16;
+  --accent: #cf4d2a;
+  --accent-2: #7a2f1b;
+  --ring: #2a1d16;
+  --shadow: rgba(42, 29, 22, 0.2);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #fff7ea 0%, var(--bg) 45%, var(--bg-2) 100%);
+  display: grid;
+  place-items: center;
+}
+
+.page {
+  width: min(960px, 92vw);
+  display: grid;
+  gap: 28px;
+  padding: 32px 0 48px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(2.3rem, 3.6vw, 3.6rem);
+  margin: 0 0 10px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.wheel-wrap {
+  position: relative;
+  width: min(520px, 86vw);
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+}
+
+canvas#wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 20px 40px var(--shadow);
+  border: 12px solid var(--ring);
+  background: #fff6e9;
+}
+
+.pointer {
+  position: absolute;
+  top: -18px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid var(--accent);
+  filter: drop-shadow(0 6px 6px var(--shadow));
+  z-index: 2;
+}
+
+.spin-btn {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid var(--ring);
+  background: radial-gradient(circle at 30% 30%, #ffdbad, #f5a979);
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 16px 30px var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 3;
+}
+
+.spin-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 8px 18px var(--shadow);
+}
+
+.result {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.result .label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.result .value {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+@media (max-width: 640px) {
+  .spin-btn {
+    width: 88px;
+    height: 88px;
+    font-size: 0.95rem;
+  }
+}
