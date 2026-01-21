@@ -50,7 +50,7 @@ body {
 
 .wheel-wrap {
   position: relative;
-  width: min(520px, 86vw);
+  width: min(620px, 90vw);
   margin: 0 auto;
   aspect-ratio: 1 / 1;
   display: grid;
