@@ -93,8 +93,22 @@ const spinWheel = () => {
       return;
     }
 
-    const pointerAngle = (Math.PI * 2 - (currentAngle % (Math.PI * 2))) % (Math.PI * 2);
-    const index = Math.floor(pointerAngle / sliceAngle) % flavors.length;
+    const fullTurn = Math.PI * 2;
+    const normalize = (angle) => ((angle % fullTurn) + fullTurn) % fullTurn;
+    const pointerAngle = normalize(Math.PI * 1.5);
+    const isBetween = (angle, start, end) => {
+      if (start <= end) return angle >= start && angle < end;
+      return angle >= start || angle < end;
+    };
+    let index = 0;
+    for (let i = 0; i < flavors.length; i += 1) {
+      const start = normalize(currentAngle + i * sliceAngle);
+      const end = normalize(start + sliceAngle);
+      if (isBetween(pointerAngle, start, end)) {
+        index = i;
+        break;
+      }
+    }
     resultText.textContent = flavors[index];
     spinning = false;
     spinBtn.disabled = false;
